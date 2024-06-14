@@ -12,7 +12,7 @@ def csv_to_json(csv_file_path, json_file_path):
         data = []
 
         # Open the CSV file for reading
-        with csv_file_path.open(mode='r', encoding='utf-8') as csv_file:
+        with csv_file_path.open(mode='r', encoding='utf-8-sig') as csv_file:
             # Create a CSV reader object
             csv_reader = csv.DictReader(csv_file)
             
@@ -22,7 +22,7 @@ def csv_to_json(csv_file_path, json_file_path):
                 data.append(row)
 
         # Convert the list of dictionaries to a JSON string
-        json_data = json.dumps(data, indent=4)
+        json_data = json.dumps(data, ensure_ascii=False, indent=4)
 
         # Write the JSON string to a file
         with json_file_path.open(mode='w', encoding='utf-8') as json_file:
