@@ -27,6 +27,11 @@ def csv_to_json(csv_file_path, json_file_path):
     with json_file_path.open(mode='w', encoding='utf-8') as json_file:
         json_file.write(json_data)
 
+except FileNotFoundError:
+        print(f"The file {csv_file_path} does not exist.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
 # Provide the path to your CSV file and the desired output path for the JSON file
 csv_file_path = 'path/to/your/input.csv'
 json_file_path = 'path/to/your/output.json'
